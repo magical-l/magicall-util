@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-import static me.magicall.consts.CommonConst.NOT_FOUND_INDEX;
+import static me.magicall.consts.CommonCons.NOT_FOUND_INDEX;
 
 public abstract class UnmodifiableListTemplate<E> extends AbstractList<E>//
 		implements Unmodifiable, Serializable, List<E>, Sorted {

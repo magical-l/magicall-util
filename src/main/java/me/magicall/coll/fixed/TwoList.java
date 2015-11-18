@@ -7,7 +7,7 @@ import java.util.List;
 
 import me.magicall.coll.CollFactory.L;
 import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
-import me.magicall.consts.CommonConst;
+import me.magicall.consts.CommonCons;
 import me.magicall.mark.Unmodifiable;
 import me.magicall.util.kit.ObjKit;
 
@@ -35,7 +35,7 @@ public class TwoList<E> extends UnmodifiableListTemplate<E>//
 	public int indexOf(final Object o) {
 		return ObjKit.INSTANCE.deepEquals(o, e1) ? 0//
 				: ObjKit.INSTANCE.deepEquals(o, e2) ? 1//
-						: CommonConst.NOT_FOUND_INDEX;
+						: CommonCons.NOT_FOUND_INDEX;
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class TwoList<E> extends UnmodifiableListTemplate<E>//
 	public int lastIndexOf(final Object o) {
 		return ObjKit.INSTANCE.deepEquals(o, e2) ? 1//
 				: ObjKit.INSTANCE.deepEquals(o, e1) ? 0//
-						: CommonConst.NOT_FOUND_INDEX;
+						: CommonCons.NOT_FOUND_INDEX;
 	}
 
 	@Override

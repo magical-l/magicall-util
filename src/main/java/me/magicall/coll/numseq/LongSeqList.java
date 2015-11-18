@@ -2,7 +2,7 @@ package me.magicall.coll.numseq;
 
 import me.magicall.coll.ElementNotNull;
 import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
-import me.magicall.consts.CommonConst;
+import me.magicall.consts.CommonCons;
 import me.magicall.mark.Unmodifiable;
 
 import java.io.Serializable;
@@ -105,7 +105,7 @@ public class LongSeqList extends UnmodifiableListTemplate<Long>//
 				return (int) r;
 			}
 		}
-		return CommonConst.NOT_FOUND_INDEX;
+		return CommonCons.NOT_FOUND_INDEX;
 	}
 
 	@Override

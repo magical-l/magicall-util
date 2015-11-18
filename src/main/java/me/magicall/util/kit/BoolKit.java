@@ -3,7 +3,7 @@
  */
 package me.magicall.util.kit;
 
-import me.magicall.consts.StrConst;
+import me.magicall.consts.StrCons;
 import me.magicall.util.ObjectUtil;
 
 public final class BoolKit extends PrimitiveKit<Boolean, boolean[]> {
@@ -11,17 +11,17 @@ public final class BoolKit extends PrimitiveKit<Boolean, boolean[]> {
 	private static final String[] SHORT_NAMES = { "bool" };
 	private static final String[] TRUE_STR = {//
 	Boolean.TRUE.toString(),//true
-			StrConst.t,//
+			StrCons.t,//
 			"1",//
-			StrConst.yes,//
-			StrConst.y,//
-			StrConst.ok,//
-			StrConst.是,//
-			StrConst.确定,//
-			StrConst.对,//
-			StrConst.好,//
-			StrConst.是的,//
-			StrConst.ON,//
+			StrCons.yes,//
+			StrCons.y,//
+			StrCons.ok,//
+			StrCons.是,//
+			StrCons.确定,//
+			StrCons.对,//
+			StrCons.好,//
+			StrCons.是的,//
+			StrCons.ON,//
 	};
 	//-----------------------------------------
 	public static final BoolKit INSTANCE = new BoolKit();

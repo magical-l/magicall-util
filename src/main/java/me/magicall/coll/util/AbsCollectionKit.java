@@ -3,7 +3,7 @@
  */
 package me.magicall.coll.util;
 
-import me.magicall.consts.CommonConst;
+import me.magicall.consts.CommonCons;
 import me.magicall.mark.Unmodifiable;
 import me.magicall.util.kit.Kits;
 import me.magicall.util.kit.WithSubclassKit;
@@ -53,7 +53,7 @@ public abstract class AbsCollectionKit<C extends Collection<?>> //
             }
             ++index;
         }
-        return CommonConst.NOT_FOUND_INDEX;
+        return CommonCons.NOT_FOUND_INDEX;
     }
 
     public <E> int findInstanceIndex(final Collection<E> source, final E target) {
@@ -82,16 +82,16 @@ public abstract class AbsCollectionKit<C extends Collection<?>> //
     }
 
     public <E> boolean contains(final Collection<E> source, final E target, final Comparator<? super E> comparator) {
-        return findIndex(source, target, comparator) > CommonConst.NOT_FOUND_INDEX;
+        return findIndex(source, target, comparator) > CommonCons.NOT_FOUND_INDEX;
     }
 
     public <E> boolean contains(final Collection<E> source, final E target,
                                 final BiPredicate<? super E, ? super E> predicate) {
-        return findIndex(source, target, predicate) > CommonConst.NOT_FOUND_INDEX;
+        return findIndex(source, target, predicate) > CommonCons.NOT_FOUND_INDEX;
     }
 
     public <E> boolean contains(final Collection<E> source, final E target) {
-        return findIndex(source, target) > CommonConst.NOT_FOUND_INDEX;
+        return findIndex(source, target) > CommonCons.NOT_FOUND_INDEX;
     }
 
     /**

@@ -1,9 +1,6 @@
 package me.magicall.lang.dynamicCompile;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.net.URI;
-import java.util.Arrays;
+import me.magicall.io.IOUtil;
 
 import javax.tools.JavaCompiler;
 import javax.tools.JavaCompiler.CompilationTask;
@@ -12,11 +9,13 @@ import javax.tools.SimpleJavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.StandardLocation;
 import javax.tools.ToolProvider;
-
-import me.magicall.io.IOUtil;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.net.URI;
+import java.util.Arrays;
 
 public class InMemoryJavaFileObject extends SimpleJavaFileObject {
-	private String contents = null;
+	private final String contents;
 
 	public InMemoryJavaFileObject(final String className, final String contents) {
 		super(URI.create("string:///" + className.replace('.', '/') + Kind.SOURCE.extension), Kind.SOURCE);

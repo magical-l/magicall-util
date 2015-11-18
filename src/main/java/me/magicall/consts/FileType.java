@@ -33,7 +33,7 @@ public enum FileType implements FilenameFilter, FileFilter {
 
 	;
 
-	private static Map<String, FileType> map = new HashMap<>();
+	private static final Map<String, FileType> map = new HashMap<>();
 	static {
 		for (final FileType t : values()) {
 			for (final String s : t.suffixes) {
@@ -45,7 +45,7 @@ public enum FileType implements FilenameFilter, FileFilter {
 	public static String getNameWithoutSuffix(final File file) {
 		final String fileName = file.getName();
 		final int lastIndex = fileName.lastIndexOf('.');
-		return lastIndex == CommonConst.NOT_FOUND_INDEX ? fileName : fileName.substring(0, lastIndex);
+		return lastIndex == CommonCons.NOT_FOUND_INDEX ? fileName : fileName.substring(0, lastIndex);
 	}
 
 	public static FileType getByFileName(final String fileName) {
@@ -58,7 +58,7 @@ public enum FileType implements FilenameFilter, FileFilter {
 	private final DataType dataType;
 	private final String[] suffixes;
 
-	private FileType(final DataType dataType, final String... otherSuffixes) {
+	FileType(final DataType dataType, final String... otherSuffixes) {
 		this.dataType = dataType;
 		suffixes = new String[1 + otherSuffixes.length];
 		suffixes[0] = '.' + name().toLowerCase();

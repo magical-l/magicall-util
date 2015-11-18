@@ -1,7 +1,7 @@
 package me.magicall.coll.fixed;
 
 import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
-import me.magicall.consts.CommonConst;
+import me.magicall.consts.CommonCons;
 import me.magicall.mark.Unmodifiable;
 
 import java.io.Serializable;
@@ -34,7 +34,7 @@ public class OneList<E> extends UnmodifiableListTemplate<E>//
 
 	@Override
 	public int indexOf(final Object o) {
-		return o == null ? (e == null ? 0 : CommonConst.NOT_FOUND_INDEX) : o.equals(e) ? 0 : CommonConst.NOT_FOUND_INDEX;
+		return o == null ? (e == null ? 0 : CommonCons.NOT_FOUND_INDEX) : o.equals(e) ? 0 : CommonCons.NOT_FOUND_INDEX;
 	}
 
 	@Override

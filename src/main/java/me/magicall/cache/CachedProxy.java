@@ -2,7 +2,6 @@ package me.magicall.cache;
 
 import me.magicall.lang.reflect.MethodSelector.SomeMethodSelectors;
 import me.magicall.lang.reflect.proxy.BaseInvocationHandler;
-import me.magicall.lang.reflect.proxy.InvocationHandlerMethodInvokator;
 import me.magicall.util.touple.Tuple;
 import me.magicall.util.touple.TwoTuple;
 
@@ -31,12 +30,12 @@ public class CachedProxy extends BaseInvocationHandler {
 	public CachedProxy(final Object internalImplementation) {
 		super();
 		this.internalImplementation = internalImplementation;
-		map = buildMap();
+		map = new HashMap<>();
 		setMethodInvokator(proxiedCachedMethodsSelector(), (invocationHandler, proxy, method, args) -> {
             if (method.getReturnType() == Void.class) {
                 return null;
             }
-            final List<Object> argsList = argArrToList(args);
+			final List<Object> argsList = Arrays.asList(args);
             final TwoTuple<Method, List<Object>> key = Tuple.of(method, argsList);
             Object o = map.get(key);
             if (o == null) {
@@ -50,26 +49,16 @@ public class CachedProxy extends BaseInvocationHandler {
 	}
 
 	/**
-	 * @param args
-	 * @return
-	 */
-	protected List<Object> argArrToList(final Object... args) {
-		return Arrays.asList(args);
-	}
-
-	/**
 	 * @return
 	 */
 	protected SomeMethodSelectors proxiedCachedMethodsSelector() {
 		return SomeMethodSelectors.ALL_NOT_OBJECT_METHOD;
 	}
 
-	protected Map<TwoTuple<Method, List<Object>>, Object> buildMap() {
-		return new HashMap<>();
-	}
-
-	protected Object invokeInternal(final InvocationHandler invocationHandler, final Object proxy, final Method method, final Object... args) {
+	private Object invokeInternal(final InvocationHandler invocationHandler, final Object proxy, final Method method,
+								  final Object... args) {
 		try {
+			method.setAccessible(true);
 			return method.invoke(internalImplementation, args);
 		} catch (final IllegalArgumentException e) {
 			e.printStackTrace();

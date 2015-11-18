@@ -2,7 +2,7 @@ package me.magicall.consts;
 
 import java.util.regex.Pattern;
 
-public interface RegexConst {
+public interface RegexCons {
 
 	String COMMON_SEPARATOR = "(,|\\s|/|，|、)+";
 

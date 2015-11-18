@@ -7,7 +7,7 @@ package me.magicall.util.time;
 import java.util.Calendar;
 import java.util.Date;
 
-import me.magicall.consts.TimeConst.YearConst;
+import me.magicall.time.YearConst;
 
 /**
  * <pre>

@@ -18,7 +18,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
-import static me.magicall.consts.CommonConst.NOT_FOUND_INDEX;
+import static me.magicall.consts.CommonCons.NOT_FOUND_INDEX;
 
 /**
  * <pre>

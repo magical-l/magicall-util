@@ -2,13 +2,13 @@ package me.magicall.util.kit;
 
 import me.magicall.coll.ElementTransformer;
 import me.magicall.coll.ElementTransformerUtil;
-import me.magicall.consts.CommonConst;
-import me.magicall.consts.StrConst;
-import me.magicall.consts.StrConst.JsonConst;
+import me.magicall.consts.CommonCons;
+import me.magicall.consts.StrCons;
+import me.magicall.consts.JsonCons;
 
 import java.util.Iterator;
 
-import static me.magicall.consts.CommonConst.NOT_FOUND_INDEX;
+import static me.magicall.consts.CommonCons.NOT_FOUND_INDEX;
 
 abstract class CharSequenceKit<S extends CharSequence> extends Kit<S> {
 
@@ -34,13 +34,13 @@ public class StrKit extends CharSequenceKit<String> {
 	//---------------------------------------
 	public static final StrKit INSTANCE = new StrKit();
 
-	public static final String EMPTY_JSON_OBJ = JsonConst.EMPTY_OBJ;
+	public static final String EMPTY_JSON_OBJ = JsonCons.EMPTY_OBJ;
 
-	public static final String EMPTY_JSON_ARR = JsonConst.EMPTY_ARR;
+	public static final String EMPTY_JSON_ARR = JsonCons.EMPTY_ARR;
 
 	//---------------------------------------
 	private StrKit() {
-		super(CLASS_ARR, StrConst.EMPTY_STR, SHORT_NAMES);
+		super(CLASS_ARR, StrCons.EMPTY_STR, SHORT_NAMES);
 	}
 
 	//---------------------------------------
@@ -293,7 +293,7 @@ public class StrKit extends CharSequenceKit<String> {
 				return i;
 			}
 		}
-		return CommonConst.NOT_FOUND_INDEX;
+		return CommonCons.NOT_FOUND_INDEX;
 	}
 
 	public boolean containsEachChar(final String longOne, final String shortOne) {
@@ -307,7 +307,7 @@ public class StrKit extends CharSequenceKit<String> {
 			//较短者字符串里的每一个字符
 			final char shortCh = shortOne.charAt(i);
 			index = findCharIgnoreCase(shortCh, longOne, index, longLen);
-			if (index == CommonConst.NOT_FOUND_INDEX || longLen - index < shortLen - i) {
+			if (index == CommonCons.NOT_FOUND_INDEX || longLen - index < shortLen - i) {
 				//若没在较长字符串里找到较短字符串里的这个字符
 				//或者虽然找到了,但是较长字符串剩下的字符数小于较短字符串剩下的字符数
 				return false;

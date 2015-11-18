@@ -9,23 +9,23 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import me.magicall.consts.StrConst;
+import me.magicall.consts.StrCons;
 import me.magicall.util.kit.Kits;
 
 public class MethodUtil {
 	public static boolean isSetter(final Method method, final boolean checkReturnType) {
 		{//name check
 			final String methodName = method.getName();
-			if (methodName.length() <= StrConst.SET_LEN) {
+			if (methodName.length() <= StrCons.SET_LEN) {
 				return false;
 			}
-			if (!methodName.startsWith(StrConst.SET)) {
+			if (!methodName.startsWith(StrCons.SET)) {
 				return false;
 			}
 			//set后的首字母不能是小写.
 			//注:在无大小写区别的语言中(比如汉语),isLowerCase和isUpperCase都返回false,
 			//因此只能检查该字符是否小写字符,若是,则认为是一个以"set"开头的单词的一部分,而非一个"set xxx"
-			if (Character.isLowerCase(methodName.charAt(StrConst.SET_LEN))) {
+			if (Character.isLowerCase(methodName.charAt(StrCons.SET_LEN))) {
 				return false;
 			}
 		}
@@ -49,16 +49,16 @@ public class MethodUtil {
 	public static boolean isGetter(final Method method) {
 		{//name check
 			final String methodName = method.getName();
-			if (methodName.length() <= StrConst.GET_LEN) {
+			if (methodName.length() <= StrCons.GET_LEN) {
 				return false;
 			}
-			if (!methodName.startsWith(StrConst.GET)) {
+			if (!methodName.startsWith(StrCons.GET)) {
 				return false;
 			}
 			//get后的首字母不能是小写.
 			//注:在无大小写区别的语言中(比如汉语),isLowerCase和isUpperCase都返回false,
 			//因此只能检查该字符是否小写字符,若是,则认为是一个以"get"开头的单词的一部分,而非一个"get xxx"
-			if (Character.isLowerCase(methodName.charAt(StrConst.GET_LEN))) {
+			if (Character.isLowerCase(methodName.charAt(StrCons.GET_LEN))) {
 				return false;
 			}
 		}
@@ -215,10 +215,10 @@ public class MethodUtil {
 			final Method[] methods = clazz.getMethods();
 			for (final Method m : methods) {
 				final String name = m.getName();
-				if (name.startsWith(StrConst.GET)//以get开头
+				if (name.startsWith(StrCons.GET)//以get开头
 						&& !name.equals("getClass")//不是getClass
-						&& name.length() > StrConst.GET_LEN//get后面还有字
-						&& Character.isUpperCase(name.charAt(StrConst.GET_LEN))//get后面的字符是大写字符
+						&& name.length() > StrCons.GET_LEN//get后面还有字
+						&& Character.isUpperCase(name.charAt(StrCons.GET_LEN))//get后面的字符是大写字符
 						&& m.getParameterTypes().length == 0//没有参数
 						&& m.getReturnType() != Void.class//有返回值
 				) {
@@ -246,9 +246,9 @@ public class MethodUtil {
 			collection = new ArrayList<>(methods.length);
 			for (final Method m : methods) {
 				final String name = m.getName();
-				if (name.startsWith(StrConst.SET)//以set开头
-						&& name.length() > StrConst.SET_LEN//set后面还有字
-						&& Character.isUpperCase(name.charAt(StrConst.SET_LEN))//set后面的字符是大写字符
+				if (name.startsWith(StrCons.SET)//以set开头
+						&& name.length() > StrCons.SET_LEN//set后面还有字
+						&& Character.isUpperCase(name.charAt(StrCons.SET_LEN))//set后面的字符是大写字符
 						&& m.getParameterTypes().length == 1//有一个参数
 				) {
 					collection.add(m);

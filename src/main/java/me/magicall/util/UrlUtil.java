@@ -1,9 +1,9 @@
 package me.magicall.util;
 
-import me.magicall.consts.StrConst.UrlConst;
+import me.magicall.consts.UrlCons;
 
-public class UrlUtil implements UrlConst {
+public class UrlUtil implements UrlCons {
 	public static boolean isRootPath(final String url) {
-		return url.startsWith(URL_SEPERATOR);
+		return url.startsWith(URL_SEPARATOR);
 	}
 }

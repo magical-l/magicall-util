@@ -3,7 +3,7 @@ package me.magicall.lang.reflect;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
-import me.magicall.consts.StrConst;
+import me.magicall.consts.StrCons;
 
 @FunctionalInterface
 public interface MethodSelector {
@@ -41,7 +41,7 @@ public interface MethodSelector {
 		 * 包含所有getter方法：以get开头，并且随后跟着至少一个字符，并且以大写字母（Character.toUpperCase(charAfterGet) == charAfterGet）开始
 		 * （包括getClass）
 		 */
-		GETTER_INCLUDING_GET_CLASS(StrConst.GET) {
+		GETTER_INCLUDING_GET_CLASS(StrCons.GET) {
 			@Override
 			boolean nameAccept(final String methodName) {
 				if (methodName.length() <= this.methodName.length()) {
@@ -60,7 +60,7 @@ public interface MethodSelector {
 		/**
 		 * 包含除了getClass之外的所有getter：以get开头，并且随后跟着至少一个字符，并且以大写字母（Character.toUpperCase(charAfterGet) == charAfterGet）开始
 		 */
-		GETTER(StrConst.GET) {
+		GETTER(StrCons.GET) {
 			@Override
 			boolean nameAccept(final String methodName) {
 				return GETTER_INCLUDING_GET_CLASS.nameAccept(methodName) && !methodName.equals("getClass");
@@ -69,7 +69,7 @@ public interface MethodSelector {
 		/**
 		 * 包含所有setter方法：以set开头，并且随后跟着至少一个字符，并且以大写字母（Character.toUpperCase(charAfterSet) == charAfterSet）开始
 		 */
-		SETTER(StrConst.SET) {
+		SETTER(StrCons.SET) {
 			@Override
 			boolean nameAccept(final String methodName) {
 				if (methodName.length() <= this.methodName.length()) {

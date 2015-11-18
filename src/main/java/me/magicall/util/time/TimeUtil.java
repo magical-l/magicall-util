@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import me.magicall.consts.TimeConst.YearConst;
+import me.magicall.time.YearConst;
 import me.magicall.util.kit.Kits;
 
 public class TimeUtil {

@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.RandomAccess;
 import java.util.Set;
 
-import static me.magicall.consts.CommonConst.NOT_FOUND_INDEX;
-import static me.magicall.consts.StrConst.EMPTY_STR_ARR;
+import static me.magicall.consts.CommonCons.NOT_FOUND_INDEX;
+import static me.magicall.consts.StrCons.EMPTY_STR_ARR;
 
 public abstract class PrimitiveKit<P, A> extends Kit<P> {
 

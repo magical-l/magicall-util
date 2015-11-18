@@ -1,6 +1,6 @@
 package me.magicall.util;
 
-import me.magicall.consts.StrConst;
+import me.magicall.consts.StrCons;
 import me.magicall.lang.reflect.proxy.ProxyUtil;
 import me.magicall.lang.reflect.proxy.bean.BeanProxy;
 
@@ -11,21 +11,21 @@ public class BeanUtil {
 	}
 
 	public static String fieldNameToGetterName(final String fieldName) {
-		return StrConst.GET + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1);
+		return StrCons.GET + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1);
 	}
 
 	public static String fieldNameToSetterName(final String fieldName) {
-		return StrConst.SET + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1);
+		return StrCons.SET + Character.toUpperCase(fieldName.charAt(0)) + fieldName.substring(1);
 	}
 
 	public static String getterNameToFieldName(final String methodName) {
-		return Character.toLowerCase(methodName.charAt(StrConst.GET_LEN))
-				+ methodName.substring(StrConst.GETTER_FIELD_NAME);
+		return Character.toLowerCase(methodName.charAt(StrCons.GET_LEN))
+				+ methodName.substring(StrCons.GETTER_FIELD_NAME);
 	}
 
 	public static String setterNameToFieldName(final String methodName) {
-		return Character.toLowerCase(methodName.charAt(StrConst.SET_LEN))
-				+ methodName.substring(StrConst.SETTER_FIELD_NAME);
+		return Character.toLowerCase(methodName.charAt(StrCons.SET_LEN))
+				+ methodName.substring(StrCons.SETTER_FIELD_NAME);
 	}
 
 	/**

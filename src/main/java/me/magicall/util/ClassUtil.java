@@ -1,7 +1,6 @@
 package me.magicall.util;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
@@ -18,7 +17,7 @@ import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-import me.magicall.consts.StrConst.EncodingConst;
+import me.magicall.consts.Encodes;
 import me.magicall.util.kit.Kits;
 import me.magicall.util.kit.PrimitiveKit;
 
@@ -294,7 +293,7 @@ public class ClassUtil {
 				//如果是以文件的形式保存在服务器上
 				if ("file".equals(protocol)) {
 					//获取包的物理路径
-					final String filePath = URLDecoder.decode(url.getFile(), EncodingConst.UTF8);
+					final String filePath = URLDecoder.decode(url.getFile(), Encodes.UTF8);
 					//以文件的方式扫描整个包下的文件 并添加到集合中
 					findAndAddClassesInPackageByFile(packageName, filePath, recursive, classes);
 				} else if ("jar".equals(protocol)) {

@@ -26,7 +26,7 @@
  */
 package me.magicall.util.kit;
 
-import me.magicall.consts.StrConst;
+import me.magicall.consts.StrCons;
 import me.magicall.util.ArrayUtil;
 import me.magicall.util.ClassUtil;
 
@@ -58,7 +58,7 @@ public abstract class Kit<T> implements Comparator<T>, Serializable {
 
 	//=========================================
 	protected Kit(final Class<T> mainClass, final T emptyValue) {
-		this(mainClass, emptyValue, StrConst.EMPTY_STR_ARR);
+		this(mainClass, emptyValue, StrCons.EMPTY_STR_ARR);
 	}
 
 	protected Kit(final Class<T> mainClass, final T emptyValue, final String... shortNames) {

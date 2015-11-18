@@ -1,7 +1,7 @@
 package me.magicall.coll.fixed;
 
 import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
-import me.magicall.consts.CommonConst;
+import me.magicall.consts.CommonCons;
 import me.magicall.mark.Unmodifiable;
 import me.magicall.util.ArrayUtil;
 import me.magicall.util.kit.Kits;
@@ -61,7 +61,7 @@ public class FixedArrayList<E> extends UnmodifiableListTemplate<E>//
 
 	@Override
 	public int indexOf(final Object o) {
-		return a == null ? CommonConst.NOT_FOUND_INDEX : ArrayUtil.indexOf(o, a);
+		return a == null ? CommonCons.NOT_FOUND_INDEX : ArrayUtil.indexOf(o, a);
 	}
 
 }

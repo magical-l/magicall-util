@@ -5,7 +5,7 @@ package me.magicall.util.time;
 
 import java.util.Date;
 
-import me.magicall.consts.TimeConst.DateConst;
+import me.magicall.time.DateConst;
 import me.magicall.util.kit.WithSubclassKit;
 
 public final class DateKit extends WithSubclassKit<Date> {

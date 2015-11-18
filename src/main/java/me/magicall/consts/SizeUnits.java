@@ -1,28 +1,30 @@
 package me.magicall.consts;
 
 public enum SizeUnits {
-	BYTE(1), //
-	KB(1024 * BYTE.size), //
-	MB(1024 * KB.size), //
-	GB(1024 * MB.size), //
-	TB(1024 * GB.size), //
-	;
+    BYTE,
+    KB(BYTE),
+    MB(KB),
+    GB(MB),
+    TB(GB),
+    PB(TB),;
 
-	public final int size;
+    public static final int RADIX = 1 << 10;
 
-	private SizeUnits(final int size) {
-		this.size = size;
-	}
+    public final int size;
 
-	public int toBytes(final int num) {
-		return size * num;
-	}
+    SizeUnits() {
+        size = 1;
+    }
 
-	public int toBytes() {
-		return toBytes(1);
-	}
+    SizeUnits(final SizeUnits lowLv) {
+        size = RADIX * lowLv.size;
+    }
 
-	public int toOtherSize(final int num, final SizeUnits sizeUnits) {
-		return size / sizeUnits.size * num;
-	}
+    public int toBytes(final int num) {
+        return size * num;
+    }
+
+    public int toOtherSize(final int num, final SizeUnits sizeUnits) {
+        return size / sizeUnits.size * num;
+    }
 }
