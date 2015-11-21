@@ -1,22 +1,18 @@
 package me.magicall.coll.unmodifiable;
 
 import me.magicall.coll.CollFactory.I;
-import me.magicall.coll.sorted.Sorted;
+import me.magicall.mark.Sorted;
+import me.magicall.consts.CommonCons;
 import me.magicall.mark.Unmodifiable;
 
-import java.io.Serializable;
 import java.util.AbstractList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-import static me.magicall.consts.CommonCons.NOT_FOUND_INDEX;
-
 public abstract class UnmodifiableListTemplate<E> extends AbstractList<E>//
-		implements Unmodifiable, Serializable, List<E>, Sorted {
-
-	private static final long serialVersionUID = -4636171047705942558L;
+		implements Unmodifiable, List<E>, Sorted {
 
 	protected UnmodifiableListTemplate() {
 		super();
@@ -72,7 +68,7 @@ public abstract class UnmodifiableListTemplate<E> extends AbstractList<E>//
 
 	@Override
 	public boolean contains(final Object o) {
-		return indexOf(o) > NOT_FOUND_INDEX;
+		return indexOf(o) > CommonCons.NOT_FOUND_INDEX;
 	}
 
 	@Override

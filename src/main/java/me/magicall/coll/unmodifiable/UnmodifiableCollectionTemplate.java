@@ -1,17 +1,15 @@
 package me.magicall.coll.unmodifiable;
 
-import java.io.Serializable;
+import me.magicall.coll.CollFactory.I;
+import me.magicall.mark.Unmodifiable;
+
 import java.util.AbstractCollection;
 import java.util.Collection;
 import java.util.Iterator;
 
-import me.magicall.coll.CollFactory.I;
-import me.magicall.mark.Unmodifiable;
-
 
 public abstract class UnmodifiableCollectionTemplate<E> extends AbstractCollection<E>//
-		implements Collection<E>, Serializable, Unmodifiable {
-	private static final long serialVersionUID = 4025111063775614660L;
+		implements Collection<E>, Unmodifiable {
 
 	public UnmodifiableCollectionTemplate() {
 		super();

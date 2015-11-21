@@ -1,14 +1,20 @@
 package me.magicall.lang.reflect;
 
+import me.magicall.lang.bean.BeanCons;
+
 import java.lang.reflect.Method;
 import java.util.Arrays;
-
-import me.magicall.consts.StrCons;
+import java.util.function.Predicate;
 
 @FunctionalInterface
-public interface MethodSelector {
+public interface MethodSelector extends Predicate<Method>{
 
 	boolean accept(Method method);
+
+	@Override
+	default boolean test(final Method method) {
+		return accept(method);
+	}
 
 	enum SomeMethodSelectors implements MethodSelector {
 		TO_STRING("toString"), //
@@ -41,7 +47,7 @@ public interface MethodSelector {
 		 * 包含所有getter方法：以get开头，并且随后跟着至少一个字符，并且以大写字母（Character.toUpperCase(charAfterGet) == charAfterGet）开始
 		 * （包括getClass）
 		 */
-		GETTER_INCLUDING_GET_CLASS(StrCons.GET) {
+		GETTER_INCLUDING_GET_CLASS(BeanCons.GET) {
 			@Override
 			boolean nameAccept(final String methodName) {
 				if (methodName.length() <= this.methodName.length()) {
@@ -60,16 +66,16 @@ public interface MethodSelector {
 		/**
 		 * 包含除了getClass之外的所有getter：以get开头，并且随后跟着至少一个字符，并且以大写字母（Character.toUpperCase(charAfterGet) == charAfterGet）开始
 		 */
-		GETTER(StrCons.GET) {
+		GETTER(BeanCons.GET) {
 			@Override
 			boolean nameAccept(final String methodName) {
-				return GETTER_INCLUDING_GET_CLASS.nameAccept(methodName) && !methodName.equals("getClass");
+				return GETTER_INCLUDING_GET_CLASS.nameAccept(methodName) && !"getClass".equals(methodName);
 			}
 		}, //
 		/**
 		 * 包含所有setter方法：以set开头，并且随后跟着至少一个字符，并且以大写字母（Character.toUpperCase(charAfterSet) == charAfterSet）开始
 		 */
-		SETTER(StrCons.SET) {
+		SETTER(BeanCons.SET) {
 			@Override
 			boolean nameAccept(final String methodName) {
 				if (methodName.length() <= this.methodName.length()) {
@@ -101,11 +107,11 @@ public interface MethodSelector {
 		final String methodName;
 		final Class<?>[] argsClasses;
 
-		private SomeMethodSelectors(final String methodName) {
+		SomeMethodSelectors(final String methodName) {
 			this(methodName, (Class<?>[]) null);
 		}
 
-		private SomeMethodSelectors(final String methodName, final Class<?>... argsClasses) {
+		SomeMethodSelectors(final String methodName, final Class<?>... argsClasses) {
 			this.methodName = methodName;
 			this.argsClasses = argsClasses;
 		}

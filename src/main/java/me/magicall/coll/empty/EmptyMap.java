@@ -3,7 +3,7 @@
  */
 package me.magicall.coll.empty;
 
-import me.magicall.coll.sorted.Sorted;
+import me.magicall.mark.Sorted;
 import me.magicall.mark.Unmodifiable;
 import me.magicall.util.kit.Kits;
 

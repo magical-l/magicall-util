@@ -4,13 +4,11 @@ import me.magicall.coll.unmodifiable.UnmodifiableCollectionTemplate;
 import me.magicall.mark.Unmodifiable;
 import me.magicall.mark.Wrapper;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;
 
 public class UnmodifiableWrapCollection<E> extends UnmodifiableCollectionTemplate<E>//
-		implements Collection<E>, Unmodifiable, Wrapper<Collection<E>>, Serializable {
-	private static final long serialVersionUID = 5693290480930330250L;
+		implements Collection<E>, Unmodifiable, Wrapper<Collection<E>> {
 
 	private final Collection<E> coll;
 

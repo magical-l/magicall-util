@@ -9,7 +9,6 @@ import java.util.Iterator;
 
 public class UnmodifiableWrapTree<E> extends UnmodifiableTreeTemplate<E>//
 		implements Wrapper<Tree<E>> {
-	private static final long serialVersionUID = -6233847775289865089L;
 
 	private final Tree<E> tree;
 

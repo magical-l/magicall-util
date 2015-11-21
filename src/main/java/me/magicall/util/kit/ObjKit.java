@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import me.magicall.util.ObjectUtil;
+import me.magicall.lang.ObjectUtil;
 
 public class ObjKit extends Kit<Object> {
 

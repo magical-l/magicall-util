@@ -5,7 +5,6 @@ import me.magicall.coll.unmodifiable.UnmodifiableEntryTemplate;
 import java.util.Map.Entry;
 
 public class UnmodifiableWrapEntry<K, V> extends UnmodifiableEntryTemplate<K, V> {
-    private static final long serialVersionUID = -7266929317579948583L;
 
     private final Entry<K, V> e;
 

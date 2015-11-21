@@ -1,6 +1,4 @@
-package me.magicall.coll.bridge;
-
-import me.magicall.coll.ElementTransformerUtil.SerializableElementTransformer;
+package me.magicall.coll;
 
 import java.util.Enumeration;
 import java.util.Iterator;
@@ -30,9 +28,7 @@ public class IteratorEnumeration<E> implements Enumeration<E> {
 		return iterator.next();
 	}
 
-	public static class IteratorToEnumerationTransformer<E> implements SerializableElementTransformer<Iterator<E>, Enumeration<E>> {
-
-		private static final long serialVersionUID = -7363714386278634903L;
+	public static class IteratorToEnumerationTransformer<E> implements ElementTransformer<Iterator<E>, Enumeration<E>> {
 
 		@Override
 		public Enumeration<E> transform(final int index, final Iterator<E> element) {

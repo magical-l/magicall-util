@@ -1,6 +1,6 @@
 package me.magicall.coll.wrap;
 
-import me.magicall.coll.sorted.Sorted;
+import me.magicall.mark.Sorted;
 import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
 import me.magicall.mark.Unmodifiable;
 import me.magicall.mark.Wrapper;

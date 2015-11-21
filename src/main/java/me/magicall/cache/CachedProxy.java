@@ -31,21 +31,21 @@ public class CachedProxy extends BaseInvocationHandler {
 		super();
 		this.internalImplementation = internalImplementation;
 		map = new HashMap<>();
-		setMethodInvokator(proxiedCachedMethodsSelector(), (invocationHandler, proxy, method, args) -> {
-            if (method.getReturnType() == Void.class) {
-                return null;
-            }
+		setMethodInvocator(proxiedCachedMethodsSelector(), (invocationHandler, proxy, method, args) -> {
+			if (method.getReturnType() == Void.class) {
+				return null;
+			}
 			final List<Object> argsList = Arrays.asList(args);
-            final TwoTuple<Method, List<Object>> key = Tuple.of(method, argsList);
-            Object o = map.get(key);
-            if (o == null) {
-                o = invokeInternal(invocationHandler, proxy, method, args);
-                if (o != null) {
-                    map.put(key, o);
-                }
-            }
-            return o;
-        });
+			final TwoTuple<Method, List<Object>> key = Tuple.of(method, argsList);
+			Object o = map.get(key);
+			if (o == null) {
+				o = invokeInternal(invocationHandler, proxy, method, args);
+				if (o != null) {
+					map.put(key, o);
+				}
+			}
+			return o;
+		});
 	}
 
 	/**

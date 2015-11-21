@@ -1,7 +1,6 @@
 package me.magicall.coll.numseq;
 
 import me.magicall.coll.CollFactory.L;
-import me.magicall.coll.ElementNotNull;
 import me.magicall.coll.unmodifiable.UnmodifiableSetTemplate;
 import me.magicall.mark.Unmodifiable;
 
@@ -26,7 +25,7 @@ import java.util.SortedSet;
  * @author MaGicalL
  */
 public class SeqSet extends UnmodifiableSetTemplate<Integer>//
-		implements Unmodifiable, Serializable, Set<Integer>, SortedSet<Integer>, ElementNotNull {
+		implements Unmodifiable, Serializable, Set<Integer>, SortedSet<Integer> {
 	private static final long serialVersionUID = -2710231552869771339L;
 
 	private final List<Integer> list;

@@ -6,15 +6,13 @@ import me.magicall.coll.map.CommonEntry;
 import me.magicall.coll.unmodifiable.UnmodifiableMapTemplate;
 import me.magicall.mark.Unmodifiable;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 
 public class ValueTransformedMap<K, T, V> extends UnmodifiableMapTemplate<K, V>//
-		implements Map<K, V>, Serializable, Unmodifiable {
-	private static final long serialVersionUID = 5133391467749204907L;
+		implements Map<K, V>, Unmodifiable {
 
 	private final Map<K, T> map;
 	private final Function<T, V> function;

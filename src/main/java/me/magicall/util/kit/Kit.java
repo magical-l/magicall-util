@@ -27,8 +27,8 @@
 package me.magicall.util.kit;
 
 import me.magicall.consts.StrCons;
-import me.magicall.util.ArrayUtil;
-import me.magicall.util.ClassUtil;
+import me.magicall.lang.ArrayUtil;
+import me.magicall.lang.reflect.ClassUtil;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;

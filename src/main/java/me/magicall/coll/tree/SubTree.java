@@ -1,7 +1,6 @@
 package me.magicall.coll.tree;
 
 import me.magicall.coll.ElementTransformer;
-import me.magicall.coll.ElementTransformerUtil.SerializableElementTransformer;
 import me.magicall.coll.unmodifiable.UnmodifiableTreeTemplate;
 import me.magicall.coll.wrap.UnmodifiableWrapTreeNode;
 import me.magicall.util.kit.Kits;
@@ -17,13 +16,10 @@ import java.util.List;
  */
 class SubTree<E> extends UnmodifiableTreeTemplate<E> {
 
-	private static final long serialVersionUID = -3747176680533544345L;
-
 	private final TreeNode<E> root;
 	private final int layerIndex;
 
 	private class SubTreeNode extends UnmodifiableWrapTreeNode<E> {
-		private static final long serialVersionUID = -2183616890313966257L;
 
 		public SubTreeNode(final TreeNode<E> node) {
 			super(node);
@@ -84,8 +80,6 @@ class SubTree<E> extends UnmodifiableTreeTemplate<E> {
 		layerIndex = r.getLayer();
 		root = new SubTreeNode(r) {
 
-			private static final long serialVersionUID = 798547396362666928L;
-
 			@Override
 			protected Collection<TreeNode<E>> brothers0() {
 				return Kits.COLL.emptyValue();
@@ -138,12 +132,5 @@ class SubTree<E> extends UnmodifiableTreeTemplate<E> {
 		return Kits.LIST.transform(source, (ElementTransformer) tf);
 	}
 
-	private final ElementTransformer<TreeNode<E>, SubTreeNode> tf = new SerializableElementTransformer<TreeNode<E>, SubTreeNode>() {
-		private static final long serialVersionUID = 210549037850213110L;
-
-		@Override
-		public SubTreeNode transform(final int index, final TreeNode<E> element) {
-			return new SubTreeNode(element);
-		}
-	};
+	private final ElementTransformer<TreeNode<E>, SubTreeNode> tf = (index, element) -> new SubTreeNode(element);
 }//SubTree

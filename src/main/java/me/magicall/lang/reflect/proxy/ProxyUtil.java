@@ -1,5 +1,9 @@
 package me.magicall.lang.reflect.proxy;
 
+import me.magicall.lang.reflect.MethodSelector.SomeMethodSelectors;
+import me.magicall.lang.ArrayUtil;
+import me.magicall.lang.reflect.ClassUtil;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -7,10 +11,6 @@ import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-import me.magicall.lang.reflect.MethodSelector.SomeMethodSelectors;
-import me.magicall.util.ArrayUtil;
-import me.magicall.util.ClassUtil;
 
 public class ProxyUtil {
 
@@ -47,7 +47,7 @@ public class ProxyUtil {
 		final InvocationHandlerMethodInvokator methodInvocator = new InvocationHandlerMethodInvokator() {
 			@Override
 			public Object invoke(final InvocationHandler invocationHandler, final Object proxy, final Method method,
-					final Object[] args)
+					final Object... args)
 					throws InvocationTargetException, IllegalArgumentException, IllegalAccessException {
 				synchronized (this) {
 					return method.invoke(source, args);
@@ -55,7 +55,7 @@ public class ProxyUtil {
 			}
 		};
 		final BaseInvocationHandler h = new BaseInvocationHandler();
-		h.setMethodInvokator(SomeMethodSelectors.ALL, methodInvocator);
+		h.setMethodInvocator(SomeMethodSelectors.ALL, methodInvocator);
 		return newProxyInstance(h, ClassUtil.getAllInterfaces(source.getClass()));
 	}
 

@@ -1,4 +1,4 @@
-package me.magicall.util;
+package me.magicall.lang;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

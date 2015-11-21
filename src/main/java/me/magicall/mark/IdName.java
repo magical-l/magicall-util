@@ -5,29 +5,22 @@ package me.magicall.mark;
 
 import me.magicall.mark.HasIdGetter.HasIntIdGetter;
 
-/**
- * @author MaGiCalL
- * @email wenjian.liang@opi-corp.com
- * @version Jun 28, 2011 12:13:13 PM
- */
 public interface IdName extends HasIntIdGetter, Named {
 
 	class SimpleIdNameImpl implements IdName {
 
 		public final int id;
-		public final Integer integerId;
 		public final String name;
 
 		public SimpleIdNameImpl(final int id, final String name) {
 			super();
 			this.id = id;
-			integerId = id;
 			this.name = name;
 		}
 
 		@Override
 		public Integer getId() {
-			return integerId;
+			return id;
 		}
 
 		@Override
@@ -55,15 +48,12 @@ public interface IdName extends HasIntIdGetter, Named {
 				return false;
 			}
 			final SimpleIdNameImpl other = (SimpleIdNameImpl) obj;
-			if (id != other.getId().intValue()) {
-				return false;
-			}
-			return true;
+			return id == other.getId();
 		}
 
 		@Override
 		public String toString() {
-			return "IdName [id=" + integerId + ", name=" + name + ']';
+			return "IdName [id=" + id + ", name=" + name + ']';
 		}
 	}
 }

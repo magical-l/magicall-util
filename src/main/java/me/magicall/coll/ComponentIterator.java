@@ -8,12 +8,12 @@ import java.util.NoSuchElementException;
 
 public class ComponentIterator<E extends ComponentItem<E>> implements Iterator<E> {
 	
-	private Deque<Iterator<E>> stack = new ArrayDeque<>();
+	private final Deque<Iterator<E>> stack = new ArrayDeque<>();
 
 	public ComponentIterator(final Iterator<E> ite) {
 		stack.push(ite);
 	}
-	
+
 	@Override
 	public boolean hasNext() {
 		if(stack.isEmpty()) {

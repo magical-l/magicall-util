@@ -1,12 +1,10 @@
 package me.magicall.coll.numseq;
 
-import me.magicall.coll.ElementNotNull;
 import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
 import me.magicall.consts.CommonCons;
 import me.magicall.mark.Unmodifiable;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -30,7 +28,7 @@ import java.util.RandomAccess;
  * @author MaGiCalL
  */
 public class LongSeqList extends UnmodifiableListTemplate<Long>//
-		implements Unmodifiable, Serializable, List<Long>, RandomAccess, ElementNotNull {
+		implements Unmodifiable, Serializable, List<Long>, RandomAccess {
 
 	private static final long serialVersionUID = 1030236818265112075L;
 
@@ -194,7 +192,7 @@ public class LongSeqList extends UnmodifiableListTemplate<Long>//
 			}
 		} else {
 			final Iterator<?> it = other.iterator();
-			for (Long aLong : this) {
+			for (final Long aLong : this) {
 				if (!aLong.equals(it.next())) {
 					return false;
 				}
@@ -213,18 +211,5 @@ public class LongSeqList extends UnmodifiableListTemplate<Long>//
 
 	public int getSize() {
 		return size;
-	}
-
-	public static void main(final String... args) {
-		final List<Long> l = new LongSeqList(1, 1, 10);
-		System.out.println(l);
-		System.out.println(l.indexOf(1));
-		System.out.println(l.lastIndexOf(1));
-
-		final List<Long> l2 = new LongSeqList(-1, -1, 10).subList(1, 6);
-		System.out.println(l2);
-
-		final List<Long> list = new ArrayList<>(l2);
-		System.out.println(l2.equals(list));
 	}
 }

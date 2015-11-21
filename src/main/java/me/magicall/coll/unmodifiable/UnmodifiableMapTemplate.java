@@ -1,20 +1,17 @@
 package me.magicall.coll.unmodifiable;
 
-import java.io.Serializable;
+import me.magicall.coll.CollFactory.C;
+import me.magicall.coll.CollFactory.S;
+import me.magicall.mark.Unmodifiable;
+
 import java.util.AbstractMap;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-import me.magicall.coll.CollFactory.C;
-import me.magicall.coll.CollFactory.S;
-import me.magicall.mark.Unmodifiable;
-
 
 public abstract class UnmodifiableMapTemplate<K, V> extends AbstractMap<K, V>//
-		implements Map<K, V>, Serializable, Unmodifiable {
-
-	private static final long serialVersionUID = 3878213948336484127L;
+		implements Map<K, V>, Unmodifiable {
 
 	public UnmodifiableMapTemplate() {
 		super();

@@ -8,7 +8,6 @@ import java.util.Collection;
 import java.util.List;
 
 public class UnmodifiableWrapTreeNode<E> extends UnmodifiableTreeNodeTemplate<E> {
-    private static final long serialVersionUID = -1586519064225142397L;
 
     protected final TreeNode<E> node;
 

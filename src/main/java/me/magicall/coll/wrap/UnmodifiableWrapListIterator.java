@@ -5,7 +5,6 @@ import me.magicall.coll.unmodifiable.UnmodifiableListIteratorTemplate;
 import java.util.ListIterator;
 
 public class UnmodifiableWrapListIterator<E> extends UnmodifiableListIteratorTemplate<E> {
-    private static final long serialVersionUID = -3594061630789916581L;
 
     private final ListIterator<E> i;
 

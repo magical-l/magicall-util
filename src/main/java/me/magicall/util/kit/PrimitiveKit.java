@@ -1,10 +1,9 @@
 package me.magicall.util.kit;
 
-import me.magicall.coll.ElementNotNull;
-import me.magicall.coll.sorted.Sorted;
+import me.magicall.mark.Sorted;
 import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
-import me.magicall.util.ArrayUtil;
-import me.magicall.util.ClassUtil;
+import me.magicall.lang.ArrayUtil;
+import me.magicall.lang.reflect.ClassUtil;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;
@@ -265,7 +264,7 @@ public abstract class PrimitiveKit<P, A> extends Kit<P> {
 	}
 
 	private class UnmodifiablePrimitiveArrayList extends UnmodifiableListTemplate<P>//
-			implements List<P>, ElementNotNull, Serializable, Sorted, RandomAccess {
+			implements List<P>, Serializable, Sorted, RandomAccess {
 
 		private static final long serialVersionUID = -8109036474085412810L;
 

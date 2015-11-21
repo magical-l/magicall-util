@@ -4,15 +4,13 @@ import me.magicall.coll.unmodifiable.UnmodifiableMapTemplate;
 import me.magicall.mark.Unmodifiable;
 import me.magicall.mark.Wrapper;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
 
 public class UnmodifiableWrapMap<K, V> extends UnmodifiableMapTemplate<K, V>//
-		implements Map<K, V>, Serializable, Wrapper<Map<K,V>>, Unmodifiable {
-	private static final long serialVersionUID = -5691150999129985447L;
+		implements Map<K, V>, Wrapper<Map<K,V>>, Unmodifiable {
 
 	private final Map<K, V> map;
 

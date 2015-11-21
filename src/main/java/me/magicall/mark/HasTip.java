@@ -1,7 +1,7 @@
 package me.magicall.mark;
 
 @FunctionalInterface
-public interface HasDescription {
+public interface HasTip {
 
 	String getTip();
 }

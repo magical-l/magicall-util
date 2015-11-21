@@ -1,9 +1,10 @@
-package me.magicall.util;
+package me.magicall.lang.reflect;
 
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 一些关于包的但是可能没什么用的工具方法。
@@ -44,20 +45,15 @@ public class PackageUtil {
 	}
 
 	public static Package[] parents(final Class<?> clazz) {
-		final List<Package> list = new LinkedList<>();
-		for (Package p = clazz.getPackage(); p != null; p = parent(p)) {
-			list.add(p);
-		}
-		return list.toArray(new Package[list.size()]);
-	}
+        return parents(clazz.getPackage());
+    }
 
 	public static boolean belongs(final Class<?> clazz, final Package pack) {
 		Package p = clazz.getPackage();
-		if (p == pack) {
+		if (Objects.equals(p, pack)) {
 			return true;
 		}
 		if (pack == null) {
-			assert p != null;
 			return false;
 		}
 		for (p = parent(p); p != null; p = parent(p)) {

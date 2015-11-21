@@ -1,6 +1,5 @@
-package me.magicall.coll.sorted;
+package me.magicall.coll;
 
-import java.io.Serializable;
 import java.util.AbstractList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,9 +13,8 @@ import java.util.RandomAccess;
  * @author MaGiCalL
  * @param <E>
  */
-public class MapList<E> extends AbstractList<E> implements List<E>, RandomAccess, Serializable {
+public class IndexElementMappingList<E> extends AbstractList<E> implements List<E>, RandomAccess {
 
-	private static final long serialVersionUID = -16787602475127134L;
 	/**
 	 * 在map中,null是defVal的占位符.
 	 * 当defVal不是null时,如果向此list中添加null对象,则会将这个Object作为null的占位符放到map中.
@@ -32,30 +30,30 @@ public class MapList<E> extends AbstractList<E> implements List<E>, RandomAccess
 
 	//------------------------------------------------
 
-	public MapList(final Map<Integer, Object> map, final int size, final E defVal) {
+	public IndexElementMappingList(final Map<Integer, Object> map, final int size, final E defVal) {
 		super();
 		this.map = map;
 		this.size = size;
 		this.defVal = defVal;
 	}
 
-	public MapList(final Map<Integer, Object> map, final int size) {
+	public IndexElementMappingList(final Map<Integer, Object> map, final int size) {
 		this(map, size, null);
 	}
 
-	public MapList(final int size, final E defVal) {
+	public IndexElementMappingList(final int size, final E defVal) {
 		this(new HashMap<>(), size, defVal);
 	}
 
-	public MapList(final E defVal) {
+	public IndexElementMappingList(final E defVal) {
 		this(0, defVal);
 	}
 
-	public MapList(final int size) {
+	public IndexElementMappingList(final int size) {
 		this(size, null);
 	}
 
-	public MapList() {
+	public IndexElementMappingList() {
 		this(0);
 	}
 
@@ -213,7 +211,7 @@ public class MapList<E> extends AbstractList<E> implements List<E>, RandomAccess
 	}
 
 	public static void main(final String... args) {
-        final MapList<String> list = new MapList<>("");
+        final IndexElementMappingList<String> list = new IndexElementMappingList<>("");
 		for (int i = 0; i < 10; ++i) {
 			list.add(String.valueOf(i));
 		}

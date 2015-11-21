@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package me.magicall.coll.fixed;
 
@@ -10,8 +10,10 @@ import me.magicall.coll.unmodifiable.UnmodifiableSetTemplate;
 import java.util.AbstractMap;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -23,7 +25,7 @@ import java.util.Set;
  * put方法与通常的map有些差异.若传入不包含在keySet中的key,将抛出IllegalArgumentException.因此在put之前最好请先检查一下.
  * 在如下情况,我认为你会喜欢用这个map的:
  * 当你需要构造一个很大的map,其中很多key的值都是一样的,在通常情况下你会挨个put这些破key.而用本map你只需要指定defValue,并且这些值的影射其实都是不存在的,大大节省了内存.
- * 
+ *
  * @author Administrator
  * @version Mar 6, 2011 9:55:10 PM
  *
@@ -32,11 +34,11 @@ public class KeyLimitedMap<K, V> extends AbstractMap<K, V> implements Map<K, V>,
 
 	private final Set<K> keySet;
 	private final Map<K, V> map;
-	private final V defValue;
+	private final V defaultValue;
 
-	public KeyLimitedMap(final Set<K> keySet, final V defValue) {
-		this.keySet = keySet;
-		this.defValue = defValue;
+	public KeyLimitedMap(final Collection<K> keySet, final V defaultValue) {
+		this.keySet = new HashSet<>(keySet);
+		this.defaultValue = defaultValue;
 		map = new HashMap<>(keySet.size());
 	}
 
@@ -55,14 +57,12 @@ public class KeyLimitedMap<K, V> extends AbstractMap<K, V> implements Map<K, V>,
 		if (map.containsValue(value)) {
 			return true;
 		}
-		return eqDef(value) && keySet.size() > map.size();
+		return Objects.equals(defaultValue, value) && keySet.size() > map.size();
 	}
 
 	@Override
 	public Set<Entry<K, V>> entrySet() {
 		return new UnmodifiableSetTemplate<Entry<K, V>>() {
-			private static final long serialVersionUID = -3071472392368964862L;
-
 			@Override
 			protected Iterator<Entry<K, V>> iterator0() {
 				return new Iterator<Entry<K, V>>() {
@@ -133,8 +133,6 @@ public class KeyLimitedMap<K, V> extends AbstractMap<K, V> implements Map<K, V>,
 	@Override
 	public Collection<V> values() {
 		return new UnmodifiableCollectionTemplate<V>() {
-			private static final long serialVersionUID = -4369032775999953308L;
-
 			@Override
 			protected Iterator<V> iterator0() {
 				return new Iterator<V>() {
@@ -164,11 +162,7 @@ public class KeyLimitedMap<K, V> extends AbstractMap<K, V> implements Map<K, V>,
 		};
 	}
 
-	private boolean eqDef(final Object value) {
-		return defValue == null ? value == null : defValue.equals(value);
-	}
-
 	private V checkedValue(final V valueFromMap) {
-		return valueFromMap == null ? defValue : valueFromMap;
+		return valueFromMap == null ? defaultValue : valueFromMap;
 	}
 }

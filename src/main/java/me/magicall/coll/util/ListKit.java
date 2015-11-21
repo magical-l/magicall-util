@@ -6,7 +6,7 @@ package me.magicall.coll.util;
 import com.google.common.collect.Lists;
 import me.magicall.coll.ElementTransformer;
 import me.magicall.coll.empty.EmptyColl;
-import me.magicall.coll.sorted.ReverseList;
+import me.magicall.coll.ReverseList;
 import me.magicall.coll.transformed.TransformedList;
 import me.magicall.coll.transformed.TransformedList.RandomAccessTransformedList;
 import me.magicall.coll.wrap.UnmodifiableWrapList;

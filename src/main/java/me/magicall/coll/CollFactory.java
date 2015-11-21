@@ -1,10 +1,6 @@
 package me.magicall.coll;
 
-import me.magicall.coll.combo.AppendList;
-import me.magicall.coll.fixed.FixedArrayList;
-import me.magicall.coll.fixed.OneList;
-import me.magicall.coll.fixed.ThreeList;
-import me.magicall.coll.fixed.TwoList;
+import com.google.common.collect.Lists;
 import me.magicall.coll.numseq.LongSeqList;
 import me.magicall.coll.numseq.SeqList;
 import me.magicall.coll.transformed.TransformedIterator;
@@ -57,20 +53,12 @@ public class CollFactory {
 	public static class L {
 
 		public static <E> List<E> asList(final E e) {
-			return new OneList<>(e);
-		}
-
-		public static <E> List<E> asList(final E e1, final E e2) {
-			return new TwoList<>(e1, e2);
-		}
-
-		public static <E> List<E> asList(final E e1, final E e2, final E e3) {
-			return new ThreeList<>(e1, e2, e3);
+			return Collections.singletonList(e);
 		}
 
 		@SafeVarargs
 		public static <E> List<E> asList(final E... es) {
-			return new FixedArrayList<>(es);
+			return Lists.newArrayList(es);
 		}
 
 		public static List<Long> seq(final long from, final int size) {
@@ -107,18 +95,6 @@ public class CollFactory {
 		 */
 		public static List<Integer> natureSeq(final int size) {
 			return new SeqList(0, size);
-		}
-
-		public static <E> List<E> append(final List<E> list, final E e) {
-			return new AppendList<>(list, e);
-		}
-
-		public static <E> List<E> append(final List<E> list, final E e1, final E e2) {
-			return new AppendList<>(list, e1, e2);
-		}
-
-		public static <E> List<E> append(final List<E> list, final E e1, final E e2, final E e3) {
-			return new AppendList<>(list, e1, e2, e3);
 		}
 	}
 
@@ -224,8 +200,6 @@ public class CollFactory {
 		public static <E> Iterator<E> unmodifiable(final Iterator<? extends E> i) {
 			return i instanceof Unmodifiable ? (Iterator<E>) i : new UnmodifiableIteratorTemplate<E>() {
 
-				private static final long serialVersionUID = 334905501067612135L;
-
 				@Override
 				public boolean hasNext() {
 					return i.hasNext();
@@ -240,8 +214,6 @@ public class CollFactory {
 
 		public static <E> ListIterator<E> unmodifiable(final ListIterator<? extends E> i) {
 			return new UnmodifiableListIteratorTemplate<E>() {
-
-				private static final long serialVersionUID = 1052934987301875691L;
 
 				@Override
 				public boolean hasPrevious() {

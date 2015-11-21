@@ -3,6 +3,8 @@
  */
 package me.magicall.coll;
 
+import java.util.function.Predicate;
+
 /**
  * 集合元素的过滤器
  * @author Administrator
@@ -16,4 +18,8 @@ public interface ElementFilter<E> {
 	 * @return
 	 */
     boolean accept(int index, E element);
+
+    static <E> ElementFilter<E> fromPredicate(final Predicate<E> predicate) {
+        return (index, element) -> predicate.test(element);
+    }
 }

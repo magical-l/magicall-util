@@ -1,4 +1,9 @@
-package me.magicall.util;
+package me.magicall.lang.reflect;
+
+import me.magicall.consts.Encodes;
+import me.magicall.lang.bean.BeanUtil;
+import me.magicall.util.kit.Kits;
+import me.magicall.util.kit.PrimitiveKit;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,10 +21,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-
-import me.magicall.consts.Encodes;
-import me.magicall.util.kit.Kits;
-import me.magicall.util.kit.PrimitiveKit;
 
 public class ClassUtil {
 	private static final char ARR_CLASS_START_CHAR = '[';
@@ -43,12 +44,13 @@ public class ClassUtil {
 		final Class<?> fieldClass = fieldValue.getClass();
 
 		final Class<?> objClass = object.getClass();
-		final Method setter = MethodUtil.getSetterIgnoreNameCaseAndTypeAssigned(objClass, fieldClass);
+		final Method setter = BeanUtil.getSetterIgnoreNameCaseAndTypeAssigned(objClass, fieldClass);
 		if (setter != null) {
+			setter.setAccessible(true);
 			MethodUtil.invokeMethod(object, setter, fieldValue);
 		}
 
-		final Method adder = MethodUtil.getAdder(objClass, fieldClass);
+		final Method adder = BeanUtil.getAdder(objClass, fieldClass);
 		if (adder != null) {
 			MethodUtil.invokeMethod(object, adder, fieldValue);
 		}
@@ -69,7 +71,7 @@ public class ClassUtil {
 		try {
 			return (T) newInstance(Class.forName(className), constructorArgs);
 		} catch (final ClassNotFoundException e) {
-//			e.printStackTrace();
+			e.printStackTrace();
 		}
 		return null;
 	}
@@ -272,20 +274,18 @@ public class ClassUtil {
 	 * @param pack
 	 * @return
 	 */
-	public static Set<Class<?>> getClasses(final Package pack) {
+	public static Collection<Class<?>> getClasses(final Package pack,final boolean recursive) {
 		//第一个class类的集合
 		final Set<Class<?>> classes = new LinkedHashSet<>();
 		//是否循环迭代
-		final boolean recursive = true;
-		//获取包的名字 并进行替换
+        //获取包的名字 并进行替换
 		String packageName = pack.getName();
 		final String packageDirName = packageName.replace('.', '/');
 		//定义一个枚举的集合 并进行循环来处理这个目录下的things
-		final Enumeration<URL> dirs;
-		try {
-			dirs = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
-			//循环迭代下去
-			while (dirs.hasMoreElements()) {
+        try {
+            final Enumeration<URL> dirs = Thread.currentThread().getContextClassLoader().getResources(packageDirName);
+            //循环迭代下去
+            while (dirs.hasMoreElements()) {
 				//获取下一个元素
 				final URL url = dirs.nextElement();
 				//得到协议的名称
@@ -299,11 +299,10 @@ public class ClassUtil {
 				} else if ("jar".equals(protocol)) {
 					//如果是jar包文件 
 					//定义一个JarFile
-					final JarFile jar;
-					try {
+                    try {
 						//获取jar
-						jar = ((JarURLConnection) url.openConnection()).getJarFile();
-						//从此jar包 得到一个枚举类
+                        final JarFile jar = ((JarURLConnection) url.openConnection()).getJarFile();
+                        //从此jar包 得到一个枚举类
 						final Enumeration<JarEntry> entries = jar.entries();
 						//同样的进行循环迭代
 						while (entries.hasMoreElements()) {

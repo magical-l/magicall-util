@@ -4,7 +4,7 @@
 package me.magicall.coll.empty;
 
 import me.magicall.coll.fixed.Fixed;
-import me.magicall.coll.sorted.Sorted;
+import me.magicall.mark.Sorted;
 import me.magicall.coll.tree.Tree;
 import me.magicall.coll.tree.TreeNodeHandler;
 import me.magicall.mark.Unmodifiable;
