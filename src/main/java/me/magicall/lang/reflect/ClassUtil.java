@@ -49,11 +49,6 @@ public class ClassUtil {
 			setter.setAccessible(true);
 			MethodUtil.invokeMethod(object, setter, fieldValue);
 		}
-
-		final Method adder = BeanUtil.getAdder(objClass, fieldClass);
-		if (adder != null) {
-			MethodUtil.invokeMethod(object, adder, fieldValue);
-		}
 	}
 
 	@SuppressWarnings("unchecked")

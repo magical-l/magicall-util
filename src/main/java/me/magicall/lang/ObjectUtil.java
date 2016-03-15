@@ -105,7 +105,7 @@ public class ObjectUtil {
         return deepEquals(o1, o2, null);
     }
 
-    static boolean deepEquals(final Object o1, final Object o2, Set<Object> escape) {
+    static boolean deepEquals(final Object o1, final Object o2, final Set<Object> escape) {
         if (escape != null && (escape.contains(o1) || escape.contains(o2))) {
             return false;
         }
@@ -141,7 +141,7 @@ public class ObjectUtil {
             return false;
         }
         //都不是原始类型数组,是普通数组
-        Set<Object> escapeToUse = escape == null ? new HashSet<>() : escape;
+        final Set<Object> escapeToUse = escape == null ? new HashSet<>() : escape;
         escapeToUse.add(o1);
         escapeToUse.add(o2);
         return ArrayUtil.deepEquals((Object[]) o1, (Object[]) o2, escapeToUse);
